@@ -1,0 +1,6 @@
+-   id: nb-check-cells-sequential
+    name: Check if notebook cells are sequential
+    description: Prevents messy notebooks from being committed.
+    entry: nb-check-cells-sequential
+    language: python
+    types: [jupyter]
