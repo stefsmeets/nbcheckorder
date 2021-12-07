@@ -18,7 +18,7 @@ Sample `.pre-commit-config.yaml`:
 
 ```yaml
 -   repo: https://github.com/stefsmeets/nbcheckorder/
-    rev: v0.1.1
+    rev: v0.1.2
     hooks:
     -   id: nbcheckorder
 ```

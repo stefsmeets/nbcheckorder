@@ -1,6 +1,6 @@
 -   id: nbcheckorder
-    name: Check if notebook cells are sequential
-    description: Prevents messy notebooks from being committed.
+    name: Check notebook cell order.
+    description: Prevents notebooks with unordered from being committed.
     entry: nbcheckorder
     language: python
     types: [jupyter]
