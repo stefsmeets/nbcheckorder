@@ -1,4 +1,4 @@
-from nb_check_cells_sequential import are_cells_sequential
+from nbcheckorder import are_cells_sequential
 import pytest
 from pathlib import Path
 

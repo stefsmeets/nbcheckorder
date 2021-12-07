@@ -12,11 +12,11 @@ def are_cells_sequential(filename):
     node = nbformat.read(filename, as_version=4)
     cells = node['cells']
 
-    for i, cell in enumerate(cells):
-        cell_number = int(cell['execution_count'])
-        expected_number = i + 1
+    for cell in cells:
+        execution_count = int(cell['execution_count'])
+        source = int(cell['source'])
 
-        if not cell_number == expected_number:
+        if not execution_count == source:
             return False
 
     return True
@@ -28,8 +28,10 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     args = parser.parse_args(argv)
 
     retval = 0
+
     for filename in args.filenames:
         if not are_cells_sequential(filename):
+            print(f'{filename}: Notebook cells are out of order')
             retval = 1
 
     return retval
