@@ -12,11 +12,11 @@ def are_cells_sequential(filename):
     node = nbformat.read(filename, as_version=4)
     cells = node['cells']
 
-    for cell in cells:
+    for i, cell in enumerate(cells):
         execution_count = int(cell['execution_count'])
-        source = int(cell['source'])
+        cell_number = i + 1
 
-        if not execution_count == source:
+        if not execution_count == cell_number:
             return False
 
     return True
