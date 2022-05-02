@@ -18,7 +18,7 @@ def are_cells_sequential(filename):
         cell_number = i + 1
         execution_count = cell.get('execution_count')
 
-        if (execution_count is None):
+        if (execution_count is None) and not (cell_number == len(code_cells)):
             print(f'{filename}: Notebook contains unexecuted cells ({cell_number=})')
             return False
         else:
