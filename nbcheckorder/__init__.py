@@ -12,7 +12,7 @@ def are_cells_sequential(filename):
     node = nbformat.read(filename, as_version=4)
     cells = node['cells']
 
-    code_cells = (cell for cell in cells if cell['cell_type'] == 'code')
+    code_cells = [cell for cell in cells if cell['cell_type'] == 'code']
 
     for i, cell in enumerate(code_cells):
         cell_number = i + 1
