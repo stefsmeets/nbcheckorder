@@ -17,8 +17,8 @@ See [pre-commit](https://github.com/pre-commit/pre-commit) for instructions.
 Sample `.pre-commit-config.yaml`:
 
 ```yaml
--   repo: https://github.com/stefsmeets/nbcheckorder/
+  - repo: https://github.com/stefsmeets/nbcheckorder/
     rev: v0.1.4
     hooks:
-    -   id: nbcheckorder
+      - id: nbcheckorder
 ```
