@@ -19,13 +19,13 @@ def are_cells_sequential(filename):
         execution_count = cell.get('execution_count')
 
         if (execution_count is None) and not (cell_number == len(code_cells)):
-            print(f'{filename}: Notebook contains unexecuted cells ({cell_number=})')
+            print(f'{filename}: Notebook contains unexecuted cells (cell number={cell_number})')
             return False
         else:
             execution_count = int(execution_count)
 
         if not execution_count == cell_number:
-            print(f'{filename}: Notebook cells are out of order ({cell_number=}, {execution_count=})')
+            print(f'{filename}: Notebook cells are out of order (cell number={cell_number}, ececution count={execution_count})')
             return False
 
     return True
