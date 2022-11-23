@@ -13,14 +13,19 @@ def are_cells_sequential(filename):
     cells = node['cells']
 
     code_cells = [cell for cell in cells if cell['cell_type'] == 'code']
+    n_cells = len(code_cells)
 
     for i, cell in enumerate(code_cells):
         cell_number = i + 1
         execution_count = cell.get('execution_count')
 
-        if (execution_count is None) and not (cell_number == len(code_cells)):
+        last_cell = cell_number == n_cells
+
+        if (execution_count is None) and not last_cell:
             print(f'{filename}: Notebook contains unexecuted cells (cell number={cell_number})')
             return False
+        elif (execution_count is None) and last_cell:
+            return True
         else:
             execution_count = int(execution_count)
 
