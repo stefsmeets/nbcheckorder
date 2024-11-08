@@ -36,14 +36,29 @@ def are_cells_sequential(filename):
     return True
 
 
+def are_all_cells_unexecuted(filename):
+    node = nbformat.read(filename, as_version=4)
+    cells = node['cells']
+
+    code_cells = [cell for cell in cells if cell['cell_type'] == 'code']
+    return all(cell.get('execution_count') is None for cell in code_cells)
+
+
 def main(argv: Optional[Sequence[str]] = None) -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument('filenames', nargs='*', help='Filenames to check.')
+    parser.add_argument(
+        '--allow-unexecuted-notebooks',
+        help='Will allow notebooks in which no cells are executed',
+        action='store_true',
+    )
     args = parser.parse_args(argv)
 
     retval = 0
 
     for filename in args.filenames:
+        if args.allow_unexecuted_notebooks and are_all_cells_unexecuted(filename):
+            continue
         if not are_cells_sequential(filename):
             retval = 1
 
