@@ -4,6 +4,8 @@ Pre-commit hook to check the order of Jupyter notebook cells.
 
 Prevents notebooks from being commited if the cell order is not sequential. This can avoid hidden state, or make sure that WIP notebooks are not commited by accident.
 
+Optionally, notebooks with no executed cells can be ignored by passing the `--allow-unexecuted-notebooks` flag.
+
 Try it out by running:
 
 ```bash
@@ -21,4 +23,5 @@ Sample `.pre-commit-config.yaml`:
     rev: v0.2.0
     hooks:
       - id: nbcheckorder
+        args: [--allow-unexecuted-notebooks]
 ```
